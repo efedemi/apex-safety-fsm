@@ -65,7 +65,7 @@ The self-checking testbench covers reset, mode entry, AI-driven motion, and ever
 safety case: e-stop overriding `AI=GO`, the AI/auto button failing to clear
 EMERGENCY, and operator-only recovery.
 
-## Design decisions (the things an interviewer will ask)
+## Design notes
 
 - **Why is `btn_estop` checked first in next-state logic?** Priority encoding =
   the safety guarantee. Evaluated before any per-state branch, so it wins from
