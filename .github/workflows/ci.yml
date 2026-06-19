@@ -1,0 +1,19 @@
+name: sim
+on: [push, pull_request]
+
+jobs:
+  icarus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+
+      - name: Compile
+        run: iverilog -g2012 -o sim.out rtl/safety_fsm.sv tb/safety_fsm_tb.sv
+
+      - name: Run self-checking testbench
+        run: |
+          vvp sim.out | tee sim.log
+          grep -q "ALL TESTS PASSED" sim.log

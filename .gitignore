@@ -1,0 +1,11 @@
+# Simulation artifacts
+*.vcd
+*.out
+sim.out
+work/
+*.jou
+*.log
+xsim.dir/
+.Xil/
+*.wdb
+*.pb
